@@ -15,8 +15,8 @@ So activate signal need to be given by user.
 
 ## Block Diagram
 
+![Screenshot (222)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/2aaf20a5-8298-4318-9a00-a74fb759baef)
 
-![Untitled Diagram drawio (3)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/4df6bcca-b413-42e0-907f-fc4a6d24dae7)
 
 # C Program
 
