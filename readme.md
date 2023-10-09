@@ -42,7 +42,7 @@ gcc .c
 
 # C code 
 
-```
+```c
 
 void checkForIntrusion();
 void delaytime(int);
@@ -127,7 +127,7 @@ To get the assembly instructions from c code execute below instructions using ri
 
 
 
-```
+```assembly
 motion_detection_alarm:     file format elf32-littleriscv
 Disassembly of section .text:
 
