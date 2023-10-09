@@ -117,10 +117,10 @@ void delaytime(int seconds) {
 
 To get the assembly instructions from c code execute below instructions using riscv32-toolchain 
 
-```
+```bash
 
-/home/dilli/riscv32-toolchain/bin/riscv32-unknown-elf-gcc -march=rv32i -mabi=ilp32 -ffreestanding -nostdlib -o motion_detection_alarm  motion_detection_alarm.c
-/home/dilli/riscv32-toolchain/bin/riscv32-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
+riscv32-unknown-elf-gcc -march=rv32i -mabi=ilp32 -ffreestanding -nostdlib -o motion_detection_alarm  motion_detection_alarm.c
+riscv32-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
 
 ```
 
@@ -128,6 +128,8 @@ To get the assembly instructions from c code execute below instructions using ri
 
 
 ```assembly
+
+
 motion_detection_alarm:     file format elf32-littleriscv
 Disassembly of section .text:
 
@@ -243,7 +245,7 @@ python3 instruction_counter.py
 
 unique instructions are :
 
-```
+```assembly
 
 Number of different instructions: 15
 List of unique instructions:
