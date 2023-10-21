@@ -119,8 +119,8 @@ To get the assembly instructions from c code execute below instructions using ri
 
 ```bash
 
-riscv32-unknown-elf-gcc -march=rv32i -mabi=ilp32 -ffreestanding -nostdlib -o motion_detection_alarm  motion_detection_alarm.c
-riscv32-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
+riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -ffreestanding -nostdlib -o motion_detection_alarm  motion_detection_alarm.c
+riscv64-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
 
 ```
 
