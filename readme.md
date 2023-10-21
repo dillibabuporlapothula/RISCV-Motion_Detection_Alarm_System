@@ -129,105 +129,100 @@ riscv32-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
 
 ```assembly
 
-
 motion_detection_alarm:     file format elf32-littleriscv
 Disassembly of section .text:
-
-00010074 <main>:
-   10074:	ff010113          	add	sp,sp,-16
-   10078:	00112623          	sw	ra,12(sp)
-   1007c:	00812423          	sw	s0,8(sp)
-   10080:	01010413          	add	s0,sp,16
-   10084:	008000ef          	jal	1008c <checkForIntrusion>
-   10088:	ffdff06f          	j	10084 <main+0x10>
-
-0001008c <checkForIntrusion>:
-   1008c:	fd010113          	add	sp,sp,-48
-   10090:	02112623          	sw	ra,44(sp)
-   10094:	02812423          	sw	s0,40(sp)
-   10098:	03010413          	add	s0,sp,48
-   1009c:	001f7793          	and	a5,t5,1
-   100a0:	fef42623          	sw	a5,-20(s0)
-   100a4:	fe042423          	sw	zero,-24(s0)
-   100a8:	fe042223          	sw	zero,-28(s0)
-   100ac:	fe842783          	lw	a5,-24(s0)
-   100b0:	00179793          	sll	a5,a5,0x1
-   100b4:	fef42023          	sw	a5,-32(s0)
-   100b8:	fe442783          	lw	a5,-28(s0)
-   100bc:	00279793          	sll	a5,a5,0x2
-   100c0:	fcf42e23          	sw	a5,-36(s0)
-   100c4:	fe042783          	lw	a5,-32(s0)
-   100c8:	fdc42703          	lw	a4,-36(s0)
-   100cc:	00ff6f33          	or	t5,t5,a5
-   100d0:	00ef6f33          	or	t5,t5,a4
-   100d4:	fec42703          	lw	a4,-20(s0)
-   100d8:	00100793          	li	a5,1
-   100dc:	04f71663          	bne	a4,a5,10128 <checkForIntrusion+0x9c>
-   100e0:	00100793          	li	a5,1
-   100e4:	fef42423          	sw	a5,-24(s0)
-   100e8:	00100793          	li	a5,1
-   100ec:	fef42223          	sw	a5,-28(s0)
-   100f0:	fe842783          	lw	a5,-24(s0)
-   100f4:	00179793          	sll	a5,a5,0x1
-   100f8:	fef42023          	sw	a5,-32(s0)
-   100fc:	fe442783          	lw	a5,-28(s0)
-   10100:	00279793          	sll	a5,a5,0x2
-   10104:	fcf42e23          	sw	a5,-36(s0)
-   10108:	fe042783          	lw	a5,-32(s0)
-   1010c:	fdc42703          	lw	a4,-36(s0)
-   10110:	00ff6f33          	or	t5,t5,a5
-   10114:	00ef6f33          	or	t5,t5,a4
-   10118:	000027b7          	lui	a5,0x2
-   1011c:	71078513          	add	a0,a5,1808 # 2710 <main-0xd964>
-   10120:	054000ef          	jal	10174 <delaytime>
-   10124:	03c0006f          	j	10160 <checkForIntrusion+0xd4>
-   10128:	fe042423          	sw	zero,-24(s0)
-   1012c:	fe042223          	sw	zero,-28(s0)
-   10130:	fe842783          	lw	a5,-24(s0)
-   10134:	00179793          	sll	a5,a5,0x1
-   10138:	fef42023          	sw	a5,-32(s0)
-   1013c:	fe442783          	lw	a5,-28(s0)
-   10140:	00279793          	sll	a5,a5,0x2
-   10144:	fcf42e23          	sw	a5,-36(s0)
-   10148:	fe042783          	lw	a5,-32(s0)
-   1014c:	fdc42703          	lw	a4,-36(s0)
-   10150:	00ff6f33          	or	t5,t5,a5
-   10154:	00ef6f33          	or	t5,t5,a4
-   10158:	3e800513          	li	a0,1000
-   1015c:	018000ef          	jal	10174 <delaytime>
-   10160:	00000013          	nop
-   10164:	02c12083          	lw	ra,44(sp)
-   10168:	02812403          	lw	s0,40(sp)
-   1016c:	03010113          	add	sp,sp,48
-   10170:	00008067          	ret
-
-00010174 <delaytime>:
-   10174:	fd010113          	add	sp,sp,-48
-   10178:	02812623          	sw	s0,44(sp)
-   1017c:	03010413          	add	s0,sp,48
-   10180:	fca42e23          	sw	a0,-36(s0)
-   10184:	fe042623          	sw	zero,-20(s0)
-   10188:	0340006f          	j	101bc <delaytime+0x48>
-   1018c:	fe042423          	sw	zero,-24(s0)
-   10190:	0100006f          	j	101a0 <delaytime+0x2c>
-   10194:	fe842783          	lw	a5,-24(s0)
-   10198:	00178793          	add	a5,a5,1
-   1019c:	fef42423          	sw	a5,-24(s0)
-   101a0:	fe842703          	lw	a4,-24(s0)
-   101a4:	000f47b7          	lui	a5,0xf4
-   101a8:	23f78793          	add	a5,a5,575 # f423f <__global_pointer$+0xe2863>
-   101ac:	fee7d4e3          	bge	a5,a4,10194 <delaytime+0x20>
-   101b0:	fec42783          	lw	a5,-20(s0)
-   101b4:	00178793          	add	a5,a5,1
-   101b8:	fef42623          	sw	a5,-20(s0)
-   101bc:	fec42703          	lw	a4,-20(s0)
-   101c0:	fdc42783          	lw	a5,-36(s0)
-   101c4:	fcf744e3          	blt	a4,a5,1018c <delaytime+0x18>
-   101c8:	00000013          	nop
-   101cc:	00000013          	nop
-   101d0:	02c12403          	lw	s0,44(sp)
-   101d4:	03010113          	add	sp,sp,48
-   101d8:	00008067          	ret
+00010054 <main>:
+   10054:	ff010113          	addi	sp,sp,-16
+   10058:	00112623          	sw	ra,12(sp)
+   1005c:	00812423          	sw	s0,8(sp)
+   10060:	01010413          	addi	s0,sp,16
+   10064:	008000ef          	jal	ra,1006c <checkForIntrusion>
+   10068:	ffdff06f          	j	10064 <main+0x10>
+0001006c <checkForIntrusion>:
+   1006c:	fd010113          	addi	sp,sp,-48
+   10070:	02112623          	sw	ra,44(sp)
+   10074:	02812423          	sw	s0,40(sp)
+   10078:	03010413          	addi	s0,sp,48
+   1007c:	001f7793          	andi	a5,t5,1
+   10080:	fef42623          	sw	a5,-20(s0)
+   10084:	fe042423          	sw	zero,-24(s0)
+   10088:	fe042223          	sw	zero,-28(s0)
+   1008c:	fe842783          	lw	a5,-24(s0)
+   10090:	00179793          	slli	a5,a5,0x1
+   10094:	fef42023          	sw	a5,-32(s0)
+   10098:	fe442783          	lw	a5,-28(s0)
+   1009c:	00279793          	slli	a5,a5,0x2
+   100a0:	fcf42e23          	sw	a5,-36(s0)
+   100a4:	fe042783          	lw	a5,-32(s0)
+   100a8:	fdc42703          	lw	a4,-36(s0)
+   100ac:	00ff6f33          	or	t5,t5,a5
+   100b0:	00ef6f33          	or	t5,t5,a4
+   100b4:	fec42703          	lw	a4,-20(s0)
+   100b8:	00100793          	li	a5,1
+   100bc:	04f71663          	bne	a4,a5,10108 <checkForIntrusion+0x9c>
+   100c0:	00100793          	li	a5,1
+   100c4:	fef42423          	sw	a5,-24(s0)
+   100c8:	00100793          	li	a5,1
+   100cc:	fef42223          	sw	a5,-28(s0)
+   100d0:	fe842783          	lw	a5,-24(s0)
+   100d4:	00179793          	slli	a5,a5,0x1
+   100d8:	fef42023          	sw	a5,-32(s0)
+   100dc:	fe442783          	lw	a5,-28(s0)
+   100e0:	00279793          	slli	a5,a5,0x2
+   100e4:	fcf42e23          	sw	a5,-36(s0)
+   100e8:	fe042783          	lw	a5,-32(s0)
+   100ec:	fdc42703          	lw	a4,-36(s0)
+   100f0:	00ff6f33          	or	t5,t5,a5
+   100f4:	00ef6f33          	or	t5,t5,a4
+   100f8:	000027b7          	lui	a5,0x2
+   100fc:	71078513          	addi	a0,a5,1808 # 2710 <main-0xd944>
+   10100:	054000ef          	jal	ra,10154 <delaytime>
+   10104:	03c0006f          	j	10140 <checkForIntrusion+0xd4>
+   10108:	fe042423          	sw	zero,-24(s0)
+   1010c:	fe042223          	sw	zero,-28(s0)
+   10110:	fe842783          	lw	a5,-24(s0)
+   10114:	00179793          	slli	a5,a5,0x1
+   10118:	fef42023          	sw	a5,-32(s0)
+   1011c:	fe442783          	lw	a5,-28(s0)
+   10120:	00279793          	slli	a5,a5,0x2
+   10124:	fcf42e23          	sw	a5,-36(s0)
+   10128:	fe042783          	lw	a5,-32(s0)
+   1012c:	fdc42703          	lw	a4,-36(s0)
+   10130:	00ff6f33          	or	t5,t5,a5
+   10134:	00ef6f33          	or	t5,t5,a4
+   10138:	3e800513          	li	a0,1000
+   1013c:	018000ef          	jal	ra,10154 <delaytime>
+   10140:	00000013          	nop
+   10144:	02c12083          	lw	ra,44(sp)
+   10148:	02812403          	lw	s0,40(sp)
+   1014c:	03010113          	addi	sp,sp,48
+   10150:	00008067          	ret
+00010154 <delaytime>:
+   10154:	fd010113          	addi	sp,sp,-48
+   10158:	02812623          	sw	s0,44(sp)
+   1015c:	03010413          	addi	s0,sp,48
+   10160:	fca42e23          	sw	a0,-36(s0)
+   10164:	fe042623          	sw	zero,-20(s0)
+   10168:	0340006f          	j	1019c <delaytime+0x48>
+   1016c:	fe042423          	sw	zero,-24(s0)
+   10170:	0100006f          	j	10180 <delaytime+0x2c>
+   10174:	fe842783          	lw	a5,-24(s0)
+   10178:	00178793          	addi	a5,a5,1
+   1017c:	fef42423          	sw	a5,-24(s0)
+   10180:	fe842703          	lw	a4,-24(s0)
+   10184:	000f47b7          	lui	a5,0xf4
+   10188:	23f78793          	addi	a5,a5,575 # f423f <__global_pointer$+0xe2887>
+   1018c:	fee7d4e3          	bge	a5,a4,10174 <delaytime+0x20>
+   10190:	fec42783          	lw	a5,-20(s0)
+   10194:	00178793          	addi	a5,a5,1
+   10198:	fef42623          	sw	a5,-20(s0)
+   1019c:	fec42703          	lw	a4,-20(s0)
+   101a0:	fdc42783          	lw	a5,-36(s0)
+   101a4:	fcf744e3          	blt	a4,a5,1016c <delaytime+0x18>
+   101a8:	00000013          	nop
+   101ac:	02c12403          	lw	s0,44(sp)
+   101b0:	03010113          	addi	sp,sp,48
+   101b4:	00008067          	ret
 
 
 ```
@@ -250,21 +245,22 @@ unique instructions are :
 Number of different instructions: 15
 List of unique instructions:
 
+blt
+li
+lw
+ret
+addi
+bne
 nop
 lui
-ret
-or
-li
-bge
-lw
-sll
-and
-jal
-bne
-blt
 sw
-add
+slli
+jal
+andi
+bge
 j
+or
+
 
 ```
 
