@@ -264,6 +264,10 @@ or
 
 ```
 
+## Spike simulation
+
+Here i modified the values to force the inputs for various test cases and observe the spice simulations.
+
 
 
 
