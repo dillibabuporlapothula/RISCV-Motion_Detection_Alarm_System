@@ -44,72 +44,108 @@ gcc .c
 
 ```c
 
-void checkForIntrusion();
-void delaytime(int);
+//#include <stdio.h>
+int main()
+{
+	int PIRSensor_op;
+	int Buzzer;
+	int Led;
+	int mask=0xFFFFFFFE;
+	//int i,j;
+	
+	
+	//for(i=0;i<2;i++)
+	 while(1)	
+	{
+          
+		asm volatile(
+	    	"addi x10, x30, 0\n\t"
+		"and %0, x10, 1\n\t"
+		:"=r"(PIRSensor_op)
+	    	:
+	    	:"x30"
+	    	);
 
-int main() {
-    while (1) {
-        checkForIntrusion();
-    }
-    return 0;
-}
+          asm volatile(
+		"addi x10, x30, 0\n\t"
+		"and %0, x10, 1\n\t"
+		:"=r"(PIRSensor_op) 
+		:
+                :"x10");
+                 
+        	
+        	//printf("PIRSensor_op is %d\n",PIRSensor_op);
+		asm volatile(
+			"addi x10, x30, 0\n\t"
+			"and %0, x10, 1\n\t"
+			:"=r"(PIRSensor_op)
+			:
+			:"x10"
+			);
+		  PIRSensor_op=1;
+		//printf("PIRSensor_op_objectdetected = %d\n",PIRSensor_op);
+				
+		
+		if(PIRSensor_op)
+		{
+		 //printf("PIRSensor_op is '1' hence motion detected\n");
+		  Led = 1;
+		  mask=0xFFFFFFF2;
+		  asm volatile(
+		      "and x30, x30, %1\n\t"
+		      "or x30, x30, %0\n\t"
+                      :
+		      :"r"(Led),"r"(mask)
+		      :"x30"
+		      );
+		  //printf("Led = %d\n",Led);
+		  
+		                       
+                        Buzzer = 1;
+			mask=0xFFFFFFF4;
+			asm volatile(
+			"and x30, x30, %1\n\t"
+			"or x30, x30, %0\n\t"
+			:
+			:"r"(Buzzer),"r"(mask)
+			:"x30"
+			);
+	        	//	  printf("Buzzer = %d\n",Buzzer);
+		}
+		else
+		{
+		 //printf("PIRSensor_op is '0' hence motion un detected\n");
+		  Led = 0;
+		   mask=0xFFFFFFF4;
+		  asm volatile(
+		      "and x30, x30, %1\n\t"
+		      "or x30, x30, %0\n\t"
+                      :
+		      :"r"(Led),"r"(mask)
+		      :"x30"
+		      );
+		      
+                  //printf("Led = %d\n",Led); 
+                  
+                                       
+                        Buzzer = 0;
+			mask=0xFFFFFFF4;
+			asm volatile(
+			"and x30, x30, %1\n\t"
+			"or x30, x30, %0\n\t"
+			:
+			:"r"(Buzzer),"r"(mask)
+			:"x30"
+			); 
+			
+	       //printf("Buzzer sounds=%d\n",Buzzer);
+		}
+	                                                          
+			
+			}
+			
+		}
 
-void checkForIntrusion() {
-    // Output from PIR sensor
-    int PIRSensor_op;
-    asm volatile(
-    "andi %0, x30, 0x01\n\t"
-    : "=r"(PIRSensor_op)
-    :
-    :);
-    int Buzzer = 0, Led = 0;
-    int Buzzer_reg = Buzzer * 2, Led_reg = Led * 4;
-    asm volatile(
-        "or x30, x30, %0\n\t"
-        "or x30, x30, %1\n\t"
-        :
-        : "r"(Buzzer_reg), "r"(Led_reg)
-        : "x30" // Specify x30 as a clobber
-    );
-    if (PIRSensor_op == 1) {
-        Buzzer = 1;
-        Led = 1;
-        Buzzer_reg = Buzzer * 2;
-        Led_reg = Led * 4;
-        asm volatile(
-            "or x30, x30, %0\n\t"
-            "or x30, x30, %1\n\t"
-            :
-            : "r"(Buzzer_reg), "r"(Led_reg)
-            : "x30" // Specify x30 as a clobber
-        );
-        // Keep the buzzer on for a certain time
-        delaytime(10000);
-    } else {
-        Buzzer = 0;
-        Led = 0;
-        Buzzer_reg = Buzzer * 2;
-        Led_reg = Led * 4;
-        asm volatile(
-            "or x30, x30, %0\n\t"
-            "or x30, x30, %1\n\t"
-            :
-            : "r"(Buzzer_reg), "r"(Led_reg)
-            : "x30" // Specify x30 as a clobber
-        );
-        // Check for every 1000 milliseconds
-        delaytime(1000);
-    }
-}
-
-// Delay function
-void delaytime(int seconds) {
-    int i, j;
-    for (i = 0; i < seconds; i++) {
-        for (j = 0; j < 1000000; j++) {
-        }
-    }
-}
 
 ```
 
@@ -132,97 +168,56 @@ riscv64-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
 motion_detection_alarm:     file format elf32-littleriscv
 Disassembly of section .text:
 00010054 <main>:
-   10054:	ff010113          	addi	sp,sp,-16
-   10058:	00112623          	sw	ra,12(sp)
-   1005c:	00812423          	sw	s0,8(sp)
-   10060:	01010413          	addi	s0,sp,16
-   10064:	008000ef          	jal	ra,1006c <checkForIntrusion>
-   10068:	ffdff06f          	j	10064 <main+0x10>
-0001006c <checkForIntrusion>:
-   1006c:	fd010113          	addi	sp,sp,-48
-   10070:	02112623          	sw	ra,44(sp)
-   10074:	02812423          	sw	s0,40(sp)
-   10078:	03010413          	addi	s0,sp,48
-   1007c:	001f7793          	andi	a5,t5,1
-   10080:	fef42623          	sw	a5,-20(s0)
-   10084:	fe042423          	sw	zero,-24(s0)
-   10088:	fe042223          	sw	zero,-28(s0)
-   1008c:	fe842783          	lw	a5,-24(s0)
-   10090:	00179793          	slli	a5,a5,0x1
-   10094:	fef42023          	sw	a5,-32(s0)
-   10098:	fe442783          	lw	a5,-28(s0)
-   1009c:	00279793          	slli	a5,a5,0x2
-   100a0:	fcf42e23          	sw	a5,-36(s0)
-   100a4:	fe042783          	lw	a5,-32(s0)
-   100a8:	fdc42703          	lw	a4,-36(s0)
-   100ac:	00ff6f33          	or	t5,t5,a5
-   100b0:	00ef6f33          	or	t5,t5,a4
-   100b4:	fec42703          	lw	a4,-20(s0)
-   100b8:	00100793          	li	a5,1
-   100bc:	04f71663          	bne	a4,a5,10108 <checkForIntrusion+0x9c>
-   100c0:	00100793          	li	a5,1
-   100c4:	fef42423          	sw	a5,-24(s0)
-   100c8:	00100793          	li	a5,1
-   100cc:	fef42223          	sw	a5,-28(s0)
-   100d0:	fe842783          	lw	a5,-24(s0)
-   100d4:	00179793          	slli	a5,a5,0x1
-   100d8:	fef42023          	sw	a5,-32(s0)
-   100dc:	fe442783          	lw	a5,-28(s0)
-   100e0:	00279793          	slli	a5,a5,0x2
-   100e4:	fcf42e23          	sw	a5,-36(s0)
-   100e8:	fe042783          	lw	a5,-32(s0)
-   100ec:	fdc42703          	lw	a4,-36(s0)
-   100f0:	00ff6f33          	or	t5,t5,a5
-   100f4:	00ef6f33          	or	t5,t5,a4
-   100f8:	000027b7          	lui	a5,0x2
-   100fc:	71078513          	addi	a0,a5,1808 # 2710 <main-0xd944>
-   10100:	054000ef          	jal	ra,10154 <delaytime>
-   10104:	03c0006f          	j	10140 <checkForIntrusion+0xd4>
-   10108:	fe042423          	sw	zero,-24(s0)
-   1010c:	fe042223          	sw	zero,-28(s0)
-   10110:	fe842783          	lw	a5,-24(s0)
-   10114:	00179793          	slli	a5,a5,0x1
-   10118:	fef42023          	sw	a5,-32(s0)
-   1011c:	fe442783          	lw	a5,-28(s0)
-   10120:	00279793          	slli	a5,a5,0x2
-   10124:	fcf42e23          	sw	a5,-36(s0)
-   10128:	fe042783          	lw	a5,-32(s0)
-   1012c:	fdc42703          	lw	a4,-36(s0)
-   10130:	00ff6f33          	or	t5,t5,a5
-   10134:	00ef6f33          	or	t5,t5,a4
-   10138:	3e800513          	li	a0,1000
-   1013c:	018000ef          	jal	ra,10154 <delaytime>
-   10140:	00000013          	nop
-   10144:	02c12083          	lw	ra,44(sp)
-   10148:	02812403          	lw	s0,40(sp)
-   1014c:	03010113          	addi	sp,sp,48
-   10150:	00008067          	ret
-00010154 <delaytime>:
-   10154:	fd010113          	addi	sp,sp,-48
-   10158:	02812623          	sw	s0,44(sp)
-   1015c:	03010413          	addi	s0,sp,48
-   10160:	fca42e23          	sw	a0,-36(s0)
-   10164:	fe042623          	sw	zero,-20(s0)
-   10168:	0340006f          	j	1019c <delaytime+0x48>
-   1016c:	fe042423          	sw	zero,-24(s0)
-   10170:	0100006f          	j	10180 <delaytime+0x2c>
-   10174:	fe842783          	lw	a5,-24(s0)
-   10178:	00178793          	addi	a5,a5,1
-   1017c:	fef42423          	sw	a5,-24(s0)
-   10180:	fe842703          	lw	a4,-24(s0)
-   10184:	000f47b7          	lui	a5,0xf4
-   10188:	23f78793          	addi	a5,a5,575 # f423f <__global_pointer$+0xe2887>
-   1018c:	fee7d4e3          	bge	a5,a4,10174 <delaytime+0x20>
-   10190:	fec42783          	lw	a5,-20(s0)
-   10194:	00178793          	addi	a5,a5,1
-   10198:	fef42623          	sw	a5,-20(s0)
-   1019c:	fec42703          	lw	a4,-20(s0)
-   101a0:	fdc42783          	lw	a5,-36(s0)
-   101a4:	fcf744e3          	blt	a4,a5,1016c <delaytime+0x18>
-   101a8:	00000013          	nop
-   101ac:	02c12403          	lw	s0,44(sp)
-   101b0:	03010113          	addi	sp,sp,48
-   101b4:	00008067          	ret
+   10054:	fe010113          	addi	sp,sp,-32
+   10058:	00812e23          	sw	s0,28(sp)
+   1005c:	02010413          	addi	s0,sp,32
+   10060:	ffe00793          	li	a5,-2
+   10064:	fef42623          	sw	a5,-20(s0)
+   10068:	000f0513          	mv	a0,t5
+   1006c:	00157793          	andi	a5,a0,1
+   10070:	fef42423          	sw(a5,-24(s0)
+   10074:	000f0513          	mv	a0,t5
+   10078:	00157793          	andi	a5,a0,1
+   1007c:	fef42423          	sw(a5,-24(s0)
+   10080:	000f0513          	mv(a0,t5)
+   10084:	00157793          	andi(a5,a0,1)
+   10088:	fef42423          	sw(a5,-24(s0)
+   1008c:	00100793          	li(a5,1)
+   10090:	fef42423          	sw(a5,-24(s0)
+   10094:	fe842783          	lw(a5,-24(s0)
+   10098:	04078463          	beqz(a5,100e0 <main+0x8c>
+   1009c:	00100793          	li(a5,1)
+   100a0:	fef42223          	sw(a5,-28(s0)
+   100a4:	ff200793          	li(a5,-14)
+   100a8:	fef42623          	sw(a5,-20(s0)
+   100ac:	fe442783          	lw(a5,-28(s0)
+   100b0:	fec42703          	lw(a4,-20(s0)
+   100b4:	00ef7f33          	and(t5,t5,a4)
+   100b8:	00ff6f33          	or(t5,t5,a5)
+   100bc:	00100793          	li(a5,1)
+   100c0:	fef42023          	sw(a5,-32(s0)
+   100c4:	ff400793          	li(a5,-12)
+   100c8:	fef42623          	sw(a5,-20(s0)
+   100cc:	fe042783          	lw(a5,-32(s0)
+   100d0:	fec42703          	lw(a4,-20(s0)
+   100d4:	00ef7f33          	and(t5,t5,a4)
+   100d8:	00ff6f33          	or(t5,t5,a5)
+   100dc:	f8dff06f          	j(10068 <main+0x14>
+   100e0:	fe042223          	sw(zero,-28(s0)
+   100e4:	ff400793          	li(a5,-12)
+   100e8:	fef42623          	sw(a5,-20(s0)
+   100ec:	fe442783          	lw(a5,-28(s0)
+   100f0:	fec42703          	lw(a4,-20(s0)
+   100f4:	00ef7f33          	and(t5,t5,a4)
+   100f8:	00ff6f33          	or(t5,t5,a5)
+   100fc:	fe042023          	sw(zero,-32(s0)
+   10100:	ff400793          	li(a5,-12)
+   10104:	fef42623          	sw(a5,-20(s0)
+   10108:	fe042783          	lw(a5,-32(s0)
+   1010c:	fec42703          	lw(a4,-20(s0)
+   10110:	00ef7f33          	and(t5,t5,a4)
+   10114:	00ff6f33          	or(t5,t5,a5)
+   10118:	f51ff06f          	j(10068 <main+0x14>
 
 
 ```
@@ -242,25 +237,20 @@ unique instructions are :
 
 ```assembly
 
-Number of different instructions: 15
+Number of different instructions: 10
+
 List of unique instructions:
 
-blt
 li
 lw
-ret
-addi
-bne
-nop
-lui
 sw
-slli
-jal
-andi
-bge
 j
+andi
+addi
+and
+beqz
 or
-
+mv
 
 ```
 
