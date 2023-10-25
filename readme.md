@@ -262,19 +262,21 @@ Here i modified the values to force the inputs for various test cases and observ
 
 ```c
 
-//#include <stdio.h>
+#include <stdio.h>
 int main()
 {
-	int PIRSensor_op;
-	int Buzzer;
-	int Led;
+	int PIRSensor_op;// 1_bit taken
+	int Buzzer;// 1_bit taken
+	int Led;// 1_bit taken
 	int mask=0xFFFFFFFE;
-	//int i,j;
+	int i,j;
 	
 	
-	//for(i=0;i<2;i++)
-	 while(1)	
+	for(i=0;i<2;i++)
+		
 	{
+
+        printf("test-case : %d\n",i+1);
           
 		asm volatile(
 	    	"addi x10, x30, 0\n\t"
@@ -292,7 +294,7 @@ int main()
                 :"x10");
                  
         	
-        	//printf("PIRSensor_op is %d\n",PIRSensor_op);
+        	printf("PIRSensor_op is %d\n",PIRSensor_op);
 		asm volatile(
 			"addi x10, x30, 0\n\t"
 			"and %0, x10, 1\n\t"
@@ -300,13 +302,18 @@ int main()
 			:
 			:"x10"
 			);
-		  PIRSensor_op=1;
-		//printf("PIRSensor_op_objectdetected = %d\n",PIRSensor_op);
+			if(i==1){
+			PIRSensor_op=1;}
+			else {
+			PIRSensor_op=0;
+			}
+		// printf("PIRSensor_op_objectdetected = %d\n",PIRSensor_op);
 				
 		
 		if(PIRSensor_op)
 		{
-		 //printf("PIRSensor_op is '1' hence motion detected\n");
+		 printf("PIRSensor_op is '1' hence motion detected\n");
+
 		  Led = 1;
 		  mask=0xFFFFFFF2;
 		  asm volatile(
@@ -316,7 +323,7 @@ int main()
 		      :"r"(Led),"r"(mask)
 		      :"x30"
 		      );
-		  //printf("Led = %d\n",Led);
+		  printf("Led = %d\n",Led);
 		  
 		                       
                         Buzzer = 1;
@@ -328,11 +335,12 @@ int main()
 			:"r"(Buzzer),"r"(mask)
 			:"x30"
 			);
-	        	//	  printf("Buzzer = %d\n",Buzzer);
+	        printf("Buzzer = %d\n",Buzzer);
 		}
 		else
 		{
-		 //printf("PIRSensor_op is '0' hence motion un detected\n");
+		 printf("PIRSensor_op is '0' hence motion not detected\n");
+
 		  Led = 0;
 		   mask=0xFFFFFFF4;
 		  asm volatile(
@@ -343,7 +351,7 @@ int main()
 		      :"x30"
 		      );
 		      
-                  //printf("Led = %d\n",Led); 
+                  printf("Led = %d\n",Led); 
                   
                                        
                         Buzzer = 0;
@@ -356,15 +364,14 @@ int main()
 			:"x30"
 			); 
 			
-	       //printf("Buzzer sounds=%d\n",Buzzer);
-		}
-	                                    
-                      
-			
-			}
-			
-		}
+	       printf("Buzzer =%d\n",Buzzer);
 
+           printf("\n");
+		}
+		
+			}
+					
+		}
 
 
 ```
