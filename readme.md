@@ -363,10 +363,11 @@ for(z=0;z<1;z++)
 	![sensor0](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/75ee0448-3679-466e-affc-c3e0b7abaa51)
 
 
+
 - Similarly If i give PIR sensor value is 1 that means intrusion is detected and buzzer and LED will be 1, buzzer_reg will be 4 and Led_reg will be 8 and they will turned on. 
+		       
 
-        ![sensor1](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/37cae939-51c3-44e0-a3e0-a2ad640bf177)
-
+	![sensor1](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/8a0307e0-b9fb-47ab-ad11-2428d0100e1e)
 
 
 
