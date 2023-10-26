@@ -152,59 +152,55 @@ riscv64-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
 
 ```assembly
 
-motion_detection_alarm:     file format elf32-littleriscv
+motion_detection_alarm: file format elf32-littleriscv
 Disassembly of section .text:
+
 00010054 <main>:
-   10054:	fe010113          	addi	sp,sp,-32
-   10058:	00812e23          	sw	s0,28(sp)
-   1005c:	02010413          	addi	s0,sp,32
-   10060:	ffe00793          	li	a5,-2
-   10064:	fef42623          	sw	a5,-20(s0)
-   10068:	000f0513          	mv	a0,t5
-   1006c:	00157793          	andi	a5,a0,1
-   10070:	fef42423          	sw(a5,-24(s0)
-   10074:	000f0513          	mv	a0,t5
-   10078:	00157793          	andi	a5,a0,1
-   1007c:	fef42423          	sw(a5,-24(s0)
-   10080:	000f0513          	mv(a0,t5)
-   10084:	00157793          	andi(a5,a0,1)
-   10088:	fef42423          	sw(a5,-24(s0)
-   1008c:	00100793          	li(a5,1)
-   10090:	fef42423          	sw(a5,-24(s0)
-   10094:	fe842783          	lw(a5,-24(s0)
-   10098:	04078463          	beqz(a5,100e0 <main+0x8c>
-   1009c:	00100793          	li(a5,1)
-   100a0:	fef42223          	sw(a5,-28(s0)
-   100a4:	ff200793          	li(a5,-14)
-   100a8:	fef42623          	sw(a5,-20(s0)
-   100ac:	fe442783          	lw(a5,-28(s0)
-   100b0:	fec42703          	lw(a4,-20(s0)
-   100b4:	00ef7f33          	and(t5,t5,a4)
-   100b8:	00ff6f33          	or(t5,t5,a5)
-   100bc:	00100793          	li(a5,1)
-   100c0:	fef42023          	sw(a5,-32(s0)
-   100c4:	ff400793          	li(a5,-12)
-   100c8:	fef42623          	sw(a5,-20(s0)
-   100cc:	fe042783          	lw(a5,-32(s0)
-   100d0:	fec42703          	lw(a4,-20(s0)
-   100d4:	00ef7f33          	and(t5,t5,a4)
-   100d8:	00ff6f33          	or(t5,t5,a5)
-   100dc:	f8dff06f          	j(10068 <main+0x14>
-   100e0:	fe042223          	sw(zero,-28(s0)
-   100e4:	ff400793          	li(a5,-12)
-   100e8:	fef42623          	sw(a5,-20(s0)
-   100ec:	fe442783          	lw(a5,-28(s0)
-   100f0:	fec42703          	lw(a4,-20(s0)
-   100f4:	00ef7f33          	and(t5,t5,a4)
-   100f8:	00ff6f33          	or(t5,t5,a5)
-   100fc:	fe042023          	sw(zero,-32(s0)
-   10100:	ff400793          	li(a5,-12)
-   10104:	fef42623          	sw(a5,-20(s0)
-   10108:	fe042783          	lw(a5,-32(s0)
-   1010c:	fec42703          	lw(a4,-20(s0)
-   10110:	00ef7f33          	and(t5,t5,a4)
-   10114:	00ff6f33          	or(t5,t5,a5)
-   10118:	f51ff06f          	j(10068 <main+0x14>
+   10054:	fd010113           addi sp,sp,-48
+   10058:	02812623           sw s0,44(sp)
+   1005c:	03010413           addi s0,sp,48
+   10060:	fe042623           sw zero,-20(s0)
+   10064:	fe042423           sw zero,-24(s0)
+   10068:	ff300793           li a5,-13
+   1006c:	fef42223           sw a5,-28(s0)
+   10070:	fec42783           lw a5,-20(s0)
+   10074:	00279793           slli a5,a5,0x2
+   10078:	fef42023           sw a5,-32(s0)
+   1007c:	fe842783           lw a5,-24(s0)
+   10080:	00379793           slli a5,a5,0x3
+   10084:	fcf42e23           sw a5,-36(s0)
+   10088:	fe042783           lw a5,-32(s0)
+   1008c:	fdc42703           lw a4,-36(s0)
+   10090:	fe442683           lw a3,-28(s0)
+   10094:	00df7f33           and t5,t5,a3
+   10098:	00ff6f33           or t5,t5,a5
+   1009c:	00ef6f33           or t5,t5,a4
+   100a0:	002f7793           andi a5,t5,2
+   100a4:	fcf42c23           sw a5,-40(s0)
+   100a8:	fc042c23           sw zero,-40(s0)
+   100ac:	fd842783           lw a5,-40(s0)
+   100b0:	00078c63           beqz a5,100c8 <main+0x74>
+   100b4:	00100793           li a5,1
+   100b8:	fef42623           sw a5,-20(s0)
+   100bc:	00100793           li a5,1
+   100c0:	fef42423           sw a5,-24(s0)
+   100c4:	00c0006f           j 100d0 <main+0x7c>
+   100c8:	fe042623           sw zero,-20(s0)
+   100cc:	fe042423           sw zero,-24(s0)
+   100d0:	fec42783           lw a5,-20(s0)
+   100d4:	00279793           slli a5,a5,0x2
+   100d8:	fef42023           sw a5,-32(s0)
+   100dc:	fe842783           lw a5,-24(s0)
+   100e0:	00379793           slli a5,a5,0x3
+   100e4:	fcf42e23           sw a5,-36(s0)
+   100e8:	fe042783           lw a5,-32(s0)
+   100ec:	fdc42703           lw a4,-36(s0)
+   100f0:	fe442683           lw a3,-28(s0)
+   100f4:	00df7f33           and t5,t5,a3
+   100f8:	00ff6f33           or t5,t5,a5
+   100fc:	00ef6f33           or t5,t5,a4
+   10100:	fa1ff06f           j 100a0 <main+0x4c>
+
 
 
 ```
@@ -224,20 +220,22 @@ unique instructions are :
 
 ```assembly
 
+
 Number of different instructions: 10
 
 List of unique instructions:
 
-li
-lw
-sw
-j
-andi
-addi
-and
-beqz
 or
-mv
+beqz
+addi
+sw
+lw
+slli
+andi
+and
+li
+j
+
 
 ```
 
