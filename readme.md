@@ -262,124 +262,110 @@ Here i modified the values to force the inputs for various test cases and observ
 
 ```c
 
-#include <stdio.h>
-int main()
-{
-	int PIRSensor_op;// 1_bit taken
-	int Buzzer;// 1_bit taken
-	int Led;// 1_bit taken
-	int mask=0xFFFFFFFE;
-	int i,j;
-	
-	
-	for(i=0;i<2;i++)
-		
-	{
+#include<stdio.h>
+#include<stdlib.h>
 
-        printf("test-case : %d\n",i+1);
-          
-		asm volatile(
-	    	"addi x10, x30, 0\n\t"
-		"and %0, x10, 1\n\t"
-		:"=r"(PIRSensor_op)
-	    	:
-	    	:"x30"
-	    	);
 
-          asm volatile(
-		"addi x10, x30, 0\n\t"
-		"and %0, x10, 1\n\t"
-		:"=r"(PIRSensor_op) 
-		:
-                :"x10");
-                 
-        	
-        	printf("PIRSensor_op is %d\n",PIRSensor_op);
-		asm volatile(
-			"addi x10, x30, 0\n\t"
-			"and %0, x10, 1\n\t"
-			:"=r"(PIRSensor_op)
-			:
-			:"x10"
-			);
-			if(i==1){
-			PIRSensor_op=1;}
-			else {
-			PIRSensor_op=0;
-			}
-		// printf("PIRSensor_op_objectdetected = %d\n",PIRSensor_op);
-				
-		
-		if(PIRSensor_op)
-		{
-		 printf("PIRSensor_op is '1' hence motion detected\n");
+int main() {
+    int PIRSensor_op;
+    int Buzzer = 0;
+    int Buzzer_reg;
+    int Led = 0  ;
+    int Led_reg; // Register for the Led
+    int mask1 = 0xFFFFFFF3;
+    Buzzer_reg = Buzzer * 4;
+    Led_reg = Led * 8;
 
-		  Led = 1;
-		  mask=0xFFFFFFF2;
-		  asm volatile(
-		      "and x30, x30, %1\n\t"
-		      "or x30, x30, %0\n\t"
-                      :
-		      :"r"(Led),"r"(mask)
-		      :"x30"
-		      );
-		  printf("Led = %d\n",Led);
-		  
-		                       
-                        Buzzer = 1;
-			mask=0xFFFFFFF4;
-			asm volatile(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:
-			:"r"(Buzzer),"r"(mask)
-			:"x30"
-			);
-	        printf("Buzzer = %d\n",Buzzer);
-		}
-		else
-		{
-		 printf("PIRSensor_op is '0' hence motion not detected\n");
+    asm volatile(
+        "and x30, x30, %2\n\t"
+        "or x30, x30, %0\n\t"
+        "or x30, x30, %1\n\t"
+        :
+        : "r"(Buzzer_reg), "r"(Led_reg),"r"(mask1)
+        : "x30"
+    );
 
-		  Led = 0;
-		   mask=0xFFFFFFF4;
-		  asm volatile(
-		      "and x30, x30, %1\n\t"
-		      "or x30, x30, %0\n\t"
-                      :
-		      :"r"(Led),"r"(mask)
-		      :"x30"
-		      );
-		      
-                  printf("Led = %d\n",Led); 
-                  
-                                       
-                        Buzzer = 0;
-			mask=0xFFFFFFF4;
-			asm volatile(
-			"and x30, x30, %1\n\t"
-			"or x30, x30, %0\n\t"
-			:
-			:"r"(Buzzer),"r"(mask)
-			:"x30"
-			); 
-			
-	       printf("Buzzer =%d\n",Buzzer);
 
-           printf("\n");
-		}
-		
-			}
-					
-		}
+        printf("Initial values are:\n");
+        printf("PIRSensor_op = %d,Buzzer_reg = %d,  Led_reg=%d\n",PIRSensor_op,Buzzer_reg,Led_reg);
+
+    	int z;
+for(z=0;z<1;z++)
+    //while (1) 
+    {	
+
+            // Simulate activating the buzzer and Led (replace with actual control)
+            asm volatile(
+                "andi %0, x30, 2\n\t"
+                : "=r"(PIRSensor_op)
+                :
+                :
+            );
+
+
+        PIRSensor_op=0; // setting the sensor value for spike simulation
+
+        printf("setting PIRSensor_op value to %d\n",PIRSensor_op);
+
+        if (PIRSensor_op) {
+                // Simulate activating the buzzer and Led (replace with actual control)
+                // digital_write(Buzzer, 1);
+                // digital_write(Led, 0);
+                // printf("Buzzer ON and Led are Off\n");
+                Buzzer = 1;
+                Led = 1;
+        
+
+        printf("intrusion detected since sensor value is 1 \n");
+
+            } else {
+                // Simulate deactivating the buzzer and Led (replace with actual control)
+                // digital_write(Buzzer, 0);
+                // digital_write(Led, 1);
+                // printf("Buzzer OFF and Led are ON\n");
+                Buzzer = 0;
+                Led = 0;
+
+        printf("intrusion not detected since sensor value is 0 \n");
+            }
+
+            // Update the corresponding registers for the buzzer and Led
+            Buzzer_reg = Buzzer * 4;
+            Led_reg = Led * 8;
+
+            asm volatile(
+                "and x30, x30, %2\n\t"
+                "or x30, x30, %0\n\t"
+                "or x30, x30, %1\n\t"
+                :
+                : "r"(Buzzer_reg), "r"(Led_reg),"r"(mask1)
+                : "x30"
+            );
+         
+    printf("PIRSensor_op = %d,Buzzer_reg = %d,  Led_reg=%d\n",PIRSensor_op,Buzzer_reg,Led_reg);
+    
+
+    }
+
+    return 0;
+}
+
 
 
 ```
 
 
+## Spike output 
+
+- Initially all the register values will be zero and If i give PIR sensor value is 0 that means no intrusion is detected and buzzer and LED will be zero and they will be turned off. 
 
 
+	![sensor0](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/75ee0448-3679-466e-affc-c3e0b7abaa51)
 
+
+- Similarly If i give PIR sensor value is 1 that means intrusion is detected and buzzer and LED will be 1, buzzer_reg will be 4 and Led_reg will be 8 and they will turned on. 
+
+        ![sensor1](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/37cae939-51c3-44e0-a3e0-a2ad640bf177)
 
 
 
