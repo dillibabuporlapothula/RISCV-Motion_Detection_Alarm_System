@@ -152,54 +152,53 @@ riscv64-unknown-elf-objdump -d -r motion_detection_alarm > sample_assembly.txt
 
 ```assembly
 
-motion_detection_alarm: file format elf32-littleriscv
+motion_detection_alarm:     file format elf32-littleriscv
 Disassembly of section .text:
-
 00010054 <main>:
-   10054:	fd010113           addi sp,sp,-48
-   10058:	02812623           sw s0,44(sp)
-   1005c:	03010413           addi s0,sp,48
-   10060:	fe042623           sw zero,-20(s0)
-   10064:	fe042423           sw zero,-24(s0)
-   10068:	ff300793           li a5,-13
-   1006c:	fef42223           sw a5,-28(s0)
-   10070:	fec42783           lw a5,-20(s0)
-   10074:	00279793           slli a5,a5,0x2
-   10078:	fef42023           sw a5,-32(s0)
-   1007c:	fe842783           lw a5,-24(s0)
-   10080:	00379793           slli a5,a5,0x3
-   10084:	fcf42e23           sw a5,-36(s0)
-   10088:	fe042783           lw a5,-32(s0)
-   1008c:	fdc42703           lw a4,-36(s0)
-   10090:	fe442683           lw a3,-28(s0)
-   10094:	00df7f33           and t5,t5,a3
-   10098:	00ff6f33           or t5,t5,a5
-   1009c:	00ef6f33           or t5,t5,a4
-   100a0:	002f7793           andi a5,t5,2
-   100a4:	fcf42c23           sw a5,-40(s0)
-   100a8:	fc042c23           sw zero,-40(s0)
-   100ac:	fd842783           lw a5,-40(s0)
-   100b0:	00078c63           beqz a5,100c8 <main+0x74>
-   100b4:	00100793           li a5,1
-   100b8:	fef42623           sw a5,-20(s0)
-   100bc:	00100793           li a5,1
-   100c0:	fef42423           sw a5,-24(s0)
-   100c4:	00c0006f           j 100d0 <main+0x7c>
-   100c8:	fe042623           sw zero,-20(s0)
-   100cc:	fe042423           sw zero,-24(s0)
-   100d0:	fec42783           lw a5,-20(s0)
-   100d4:	00279793           slli a5,a5,0x2
-   100d8:	fef42023           sw a5,-32(s0)
-   100dc:	fe842783           lw a5,-24(s0)
-   100e0:	00379793           slli a5,a5,0x3
-   100e4:	fcf42e23           sw a5,-36(s0)
-   100e8:	fe042783           lw a5,-32(s0)
-   100ec:	fdc42703           lw a4,-36(s0)
-   100f0:	fe442683           lw a3,-28(s0)
-   100f4:	00df7f33           and t5,t5,a3
-   100f8:	00ff6f33           or t5,t5,a5
-   100fc:	00ef6f33           or t5,t5,a4
-   10100:	fa1ff06f           j 100a0 <main+0x4c>
+   10054:	fd010113          	addi	sp,sp,-48
+   10058:	02812623          	sw	s0,44(sp)
+   1005c:	03010413          	addi	s0,sp,48
+   10060:	fe042623          	sw	zero,-20(s0)
+   10064:	fe042423          	sw	zero,-24(s0)
+   10068:	ff300793          	li	a5,-13
+   1006c:	fef42223          	sw	a5,-28(s0)
+   10070:	fec42783          	lw	a5,-20(s0)
+   10074:	00279793          	slli	a5,a5,0x2
+   10078:	fef42023          	sw	a5,-32(s0)
+   1007c:	fe842783          	lw	a5,-24(s0)
+   10080:	00379793          	slli	a5,a5,0x3
+   10084:	fcf42e23          	sw	a5,-36(s0)
+   10088:	fe042783          	lw	a5,-32(s0)
+   1008c:	fdc42703          	lw	a4,-36(s0)
+   10090:	fe442683          	lw	a3,-28(s0)
+   10094:	00df7f33          	and	t5,t5,a3
+   10098:	00ff6f33          	or	t5,t5,a5
+   1009c:	00ef6f33          	or	t5,t5,a4
+   100a0:	002f7793          	andi	a5,t5,2
+   100a4:	fcf42c23          	sw	a5,-40(s0)
+   100a8:	fd842783          	lw	a5,-40(s0)
+   100ac:	00078c63          	beqz	a5,100c4 <main+0x70>
+   100b0:	00100793          	li	a5,1
+   100b4:	fef42623          	sw	a5,-20(s0)
+   100b8:	00100793          	li	a5,1
+   100bc:	fef42423          	sw	a5,-24(s0)
+   100c0:	00c0006f          	j	100cc <main+0x78>
+   100c4:	fe042623          	sw	zero,-20(s0)
+   100c8:	fe042423          	sw	zero,-24(s0)
+   100cc:	fec42783          	lw	a5,-20(s0)
+   100d0:	00279793          	slli	a5,a5,0x2
+   100d4:	fef42023          	sw	a5,-32(s0)
+   100d8:	fe842783          	lw	a5,-24(s0)
+   100dc:	00379793          	slli	a5,a5,0x3
+   100e0:	fcf42e23          	sw	a5,-36(s0)
+   100e4:	fe042783          	lw	a5,-32(s0)
+   100e8:	fdc42703          	lw	a4,-36(s0)
+   100ec:	fe442683          	lw	a3,-28(s0)
+   100f0:	00df7f33          	and	t5,t5,a3
+   100f4:	00ff6f33          	or	t5,t5,a5
+   100f8:	00ef6f33          	or	t5,t5,a4
+   100fc:	fa5ff06f          	j	100a0 <main+0x4c>
+
 
 
 
@@ -235,6 +234,23 @@ andi
 and
 li
 j
+
+
+Number of different instructions: 10
+
+List of unique instructions:
+
+or
+lw
+sw
+slli
+addi
+li
+beqz
+andi
+and
+j
+
 
 
 ```
