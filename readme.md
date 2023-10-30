@@ -370,11 +370,16 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
 ## Functional Verification
 
 
-	![VirtualBox_ubuntu-VLSI_31_10_2023_00_34_57](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/9f0b8ef7-7e01-4cd7-ba9b-437e90d3f091)
+
+![VirtualBox_ubuntu-VLSI_31_10_2023_00_34_57](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/bfa23822-606e-4df8-93b9-8fb49ebf06eb)
 
 
-	![VirtualBox_ubuntu-VLSI_31_10_2023_00_37_41](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/0926f0c7-47d5-4c54-8331-c18188e60ca4)
 
+
+
+
+
+![VirtualBox_ubuntu-VLSI_31_10_2023_00_37_41](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/e6888090-f38f-4871-9d4a-cb7642ad36b5)
 
 
 
