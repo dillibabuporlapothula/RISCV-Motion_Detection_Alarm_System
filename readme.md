@@ -86,7 +86,7 @@ int main() {
             );
 
 
-        PIRSensor_op=0; // setting the sensor value for spike simulation
+        // PIRSensor_op=0; // setting the sensor value for spike simulation
 
         //printf("setting PIRSensor_op value to %d\n",PIRSensor_op);
 
