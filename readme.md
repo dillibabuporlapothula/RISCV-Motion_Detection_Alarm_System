@@ -392,17 +392,19 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
 
 
 
-- Input , output wires along with instructions.
-
-
- 
-![Screenshot (274)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/ed92c338-ad75-4ee4-8599-5b9bd5629d2e)
+### Instruction verification
 
 
 
+![Screenshot (277)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/fbeccf39-1a71-4149-b089-590c43acb912)
 
 
-![Screenshot (273)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/f4ecaa24-b39a-483f-bddb-e723fd62e9de)
+
+
+
+![Screenshot (278)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/2f26ff6c-5f26-4a47-8989-78644c65b5b6)
+
+
 
 
 
