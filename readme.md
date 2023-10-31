@@ -370,16 +370,17 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
 ## Functional Verification
 
 
+- If input is zero there is no motion and buzzer,LED will be off and output will be 00. When ever PIR sensor detects motion and input is high the output buzzer and LED will turn on and we can see output going to 11 state from below waveforms.
 
-![VirtualBox_ubuntu-VLSI_31_10_2023_00_34_57](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/bfa23822-606e-4df8-93b9-8fb49ebf06eb)
-
-
-
+   ![Screenshot (268)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/6e30db77-ea85-4eac-8a3e-54a23bf715d4)
 
 
+- Input , output wires along with instructions.
+
+   ![Screenshot (270)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/f501f43e-46a8-443e-9d42-3e350fd17ccc)
 
 
-![VirtualBox_ubuntu-VLSI_31_10_2023_00_37_41](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/e6888090-f38f-4871-9d4a-cb7642ad36b5)
+
 
 
 
