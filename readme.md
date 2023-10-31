@@ -375,6 +375,21 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
    ![Screenshot (268)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/6e30db77-ea85-4eac-8a3e-54a23bf715d4)
 
 
+- For ```input 0``` case
+
+
+   ![Screenshot (276)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/a1a18f9c-6d3d-44c0-9f9e-410a14d54c85)
+
+
+- For ```input 1``` case
+  
+  ![Screenshot (275)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/587e1074-ec43-4993-b1fc-bb5efa6cb349)
+
+
+  we can see that output is changing from 00 -> 01 -> staying at 11 -> 10 -> back to 00 . the small glitches 01 and 10 are because of masking being performed.
+
+
+
 
 
 - Input , output wires along with instructions.
