@@ -398,13 +398,15 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
 
 ![Screenshot (279)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/a74cabfd-0521-40cc-9c13-34f45476dee2)
 
-**002f7793** : 
+**002f7793** :  ```   andi   a5,t5,2   ``` 
 
- ```  andi a5,t5,2  ``` .The instruction is performing a bitwise AND operation between the value in register t5 and the immediate value 2, effectively performing a bit masking operation to extract specific bits or check for a particular bit pattern in the t5 register.
+ The instruction is performing a bitwise AND operation between the value in register t5 and the immediate value 2, effectively performing a bit masking operation to extract specific bits or check for a particular bit pattern in the t5 register.
 
- **fcf42c23**:
+ 
 
- ```  sw  a5,-40(s0) ``` . The instruction stores the content of register a5 into memory and we can see the 11 being stored in registor x30 .
+ **fcf42c23**:  ```  sw   a5,-40(s0)  ```
+
+  The instruction stores the content of register a5 into memory and we can see the 11 as output and 00000011 being stored in registor x30 .
 
  
 
@@ -417,7 +419,6 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
 ![Screenshot (278)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/2f26ff6c-5f26-4a47-8989-78644c65b5b6)
 
 
+  **fdc42703**:  ```  lw	a4,-36(s0) ```
 
-
-
-
+  This instruction loads a word from the memory address calculated by adding the immediate value -36 to the content of register s0 and stores it in register a4. the output value in x30 register is 00. 
