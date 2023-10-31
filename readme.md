@@ -225,22 +225,6 @@ Number of different instructions: 10
 List of unique instructions:
 
 or
-beqz
-addi
-sw
-lw
-slli
-andi
-and
-li
-j
-
-
-Number of different instructions: 10
-
-List of unique instructions:
-
-or
 lw
 sw
 slli
