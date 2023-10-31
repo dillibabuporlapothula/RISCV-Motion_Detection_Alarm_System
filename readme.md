@@ -396,7 +396,11 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
 
 
 
-![Screenshot (277)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/fbeccf39-1a71-4149-b089-590c43acb912)
+![Screenshot (279)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/a74cabfd-0521-40cc-9c13-34f45476dee2)
+
+
+
+
 
 
 
