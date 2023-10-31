@@ -398,10 +398,18 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
 
 ![Screenshot (279)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/a74cabfd-0521-40cc-9c13-34f45476dee2)
 
+**002f7793** : 
+
+ ```  andi a5,t5,2  ``` .The instruction is performing a bitwise AND operation between the value in register t5 and the immediate value 2, effectively performing a bit masking operation to extract specific bits or check for a particular bit pattern in the t5 register.
+
+ **fcf42c23**:
+
+ ```  sw  a5,-40(s0) ``` . The instruction stores the content of register a5 into memory and we can see the 11 being stored in registor x30 .
+
+ 
 
 
-
-
+ 
 
 
 
