@@ -1,98 +1,50 @@
+
 motion_detection_alarm:     file format elf32-littleriscv
 Disassembly of section .text:
+00010054 <main>:
+   10054:	fd010113          	addi	sp,sp,-48
+   10058:	02812623          	sw	s0,44(sp)
+   1005c:	03010413          	addi	s0,sp,48
+   10060:	fe042623          	sw	zero,-20(s0)
+   10064:	fe042423          	sw	zero,-24(s0)
+   10068:	ff300793          	li	a5,-13
+   1006c:	fef42223          	sw	a5,-28(s0)
+   10070:	fec42783          	lw	a5,-20(s0)
+   10074:	00279793          	slli	a5,a5,0x2
+   10078:	fef42023          	sw	a5,-32(s0)
+   1007c:	fe842783          	lw	a5,-24(s0)
+   10080:	00379793          	slli	a5,a5,0x3
+   10084:	fcf42e23          	sw	a5,-36(s0)
+   10088:	fe042783          	lw	a5,-32(s0)
+   1008c:	fdc42703          	lw	a4,-36(s0)
+   10090:	fe442683          	lw	a3,-28(s0)
+   10094:	00df7f33          	and	t5,t5,a3
+   10098:	00ff6f33          	or	t5,t5,a5
+   1009c:	00ef6f33          	or	t5,t5,a4
+   100a0:	002f7793          	andi	a5,t5,2
+   100a4:	fcf42c23          	sw	a5,-40(s0)
+   100a8:	fd842783          	lw	a5,-40(s0)
+   100ac:	00078c63          	beqz	a5,100c4 <main+0x70>
+   100b0:	00100793          	li	a5,1
+   100b4:	fef42623          	sw	a5,-20(s0)
+   100b8:	00100793          	li	a5,1
+   100bc:	fef42423          	sw	a5,-24(s0)
+   100c0:	00c0006f          	j	100cc <main+0x78>
+   100c4:	fe042623          	sw	zero,-20(s0)
+   100c8:	fe042423          	sw	zero,-24(s0)
+   100cc:	fec42783          	lw	a5,-20(s0)
+   100d0:	00279793          	slli	a5,a5,0x2
+   100d4:	fef42023          	sw	a5,-32(s0)
+   100d8:	fe842783          	lw	a5,-24(s0)
+   100dc:	00379793          	slli	a5,a5,0x3
+   100e0:	fcf42e23          	sw	a5,-36(s0)
+   100e4:	fe042783          	lw	a5,-32(s0)
+   100e8:	fdc42703          	lw	a4,-36(s0)
+   100ec:	fe442683          	lw	a3,-28(s0)
+   100f0:	00df7f33          	and	t5,t5,a3
+   100f4:	00ff6f33          	or	t5,t5,a5
+   100f8:	00ef6f33          	or	t5,t5,a4
+   100fc:	fa5ff06f          	j	100a0 <main+0x4c>
 
-00010074 <main>:
-   10074:	ff010113          	add	sp,sp,-16
-   10078:	00112623          	sw	ra,12(sp)
-   1007c:	00812423          	sw	s0,8(sp)
-   10080:	01010413          	add	s0,sp,16
-   10084:	008000ef          	jal	1008c <checkForIntrusion>
-   10088:	ffdff06f          	j	10084 <main+0x10>
 
-0001008c <checkForIntrusion>:
-   1008c:	fd010113          	add	sp,sp,-48
-   10090:	02112623          	sw	ra,44(sp)
-   10094:	02812423          	sw	s0,40(sp)
-   10098:	03010413          	add	s0,sp,48
-   1009c:	001f7793          	and	a5,t5,1
-   100a0:	fef42623          	sw	a5,-20(s0)
-   100a4:	fe042423          	sw	zero,-24(s0)
-   100a8:	fe042223          	sw	zero,-28(s0)
-   100ac:	fe842783          	lw	a5,-24(s0)
-   100b0:	00179793          	sll	a5,a5,0x1
-   100b4:	fef42023          	sw	a5,-32(s0)
-   100b8:	fe442783          	lw	a5,-28(s0)
-   100bc:	00279793          	sll	a5,a5,0x2
-   100c0:	fcf42e23          	sw	a5,-36(s0)
-   100c4:	fe042783          	lw	a5,-32(s0)
-   100c8:	fdc42703          	lw	a4,-36(s0)
-   100cc:	00ff6f33          	or	t5,t5,a5
-   100d0:	00ef6f33          	or	t5,t5,a4
-   100d4:	fec42703          	lw	a4,-20(s0)
-   100d8:	00100793          	li	a5,1
-   100dc:	04f71663          	bne	a4,a5,10128 <checkForIntrusion+0x9c>
-   100e0:	00100793          	li	a5,1
-   100e4:	fef42423          	sw	a5,-24(s0)
-   100e8:	00100793          	li	a5,1
-   100ec:	fef42223          	sw	a5,-28(s0)
-   100f0:	fe842783          	lw	a5,-24(s0)
-   100f4:	00179793          	sll	a5,a5,0x1
-   100f8:	fef42023          	sw	a5,-32(s0)
-   100fc:	fe442783          	lw	a5,-28(s0)
-   10100:	00279793          	sll	a5,a5,0x2
-   10104:	fcf42e23          	sw	a5,-36(s0)
-   10108:	fe042783          	lw	a5,-32(s0)
-   1010c:	fdc42703          	lw	a4,-36(s0)
-   10110:	00ff6f33          	or	t5,t5,a5
-   10114:	00ef6f33          	or	t5,t5,a4
-   10118:	000027b7          	lui	a5,0x2
-   1011c:	71078513          	add	a0,a5,1808 # 2710 <main-0xd964>
-   10120:	054000ef          	jal	10174 <delaytime>
-   10124:	03c0006f          	j	10160 <checkForIntrusion+0xd4>
-   10128:	fe042423          	sw	zero,-24(s0)
-   1012c:	fe042223          	sw	zero,-28(s0)
-   10130:	fe842783          	lw	a5,-24(s0)
-   10134:	00179793          	sll	a5,a5,0x1
-   10138:	fef42023          	sw	a5,-32(s0)
-   1013c:	fe442783          	lw	a5,-28(s0)
-   10140:	00279793          	sll	a5,a5,0x2
-   10144:	fcf42e23          	sw	a5,-36(s0)
-   10148:	fe042783          	lw	a5,-32(s0)
-   1014c:	fdc42703          	lw	a4,-36(s0)
-   10150:	00ff6f33          	or	t5,t5,a5
-   10154:	00ef6f33          	or	t5,t5,a4
-   10158:	3e800513          	li	a0,1000
-   1015c:	018000ef          	jal	10174 <delaytime>
-   10160:	00000013          	nop
-   10164:	02c12083          	lw	ra,44(sp)
-   10168:	02812403          	lw	s0,40(sp)
-   1016c:	03010113          	add	sp,sp,48
-   10170:	00008067          	ret
 
-00010174 <delaytime>:
-   10174:	fd010113          	add	sp,sp,-48
-   10178:	02812623          	sw	s0,44(sp)
-   1017c:	03010413          	add	s0,sp,48
-   10180:	fca42e23          	sw	a0,-36(s0)
-   10184:	fe042623          	sw	zero,-20(s0)
-   10188:	0340006f          	j	101bc <delaytime+0x48>
-   1018c:	fe042423          	sw	zero,-24(s0)
-   10190:	0100006f          	j	101a0 <delaytime+0x2c>
-   10194:	fe842783          	lw	a5,-24(s0)
-   10198:	00178793          	add	a5,a5,1
-   1019c:	fef42423          	sw	a5,-24(s0)
-   101a0:	fe842703          	lw	a4,-24(s0)
-   101a4:	000f47b7          	lui	a5,0xf4
-   101a8:	23f78793          	add	a5,a5,575 # f423f <__global_pointer$+0xe2863>
-   101ac:	fee7d4e3          	bge	a5,a4,10194 <delaytime+0x20>
-   101b0:	fec42783          	lw	a5,-20(s0)
-   101b4:	00178793          	add	a5,a5,1
-   101b8:	fef42623          	sw	a5,-20(s0)
-   101bc:	fec42703          	lw	a4,-20(s0)
-   101c0:	fdc42783          	lw	a5,-36(s0)
-   101c4:	fcf744e3          	blt	a4,a5,1018c <delaytime+0x18>
-   101c8:	00000013          	nop
-   101cc:	00000013          	nop
-   101d0:	02c12403          	lw	s0,44(sp)
-   101d4:	03010113          	add	sp,sp,48
-   101d8:	00008067          	ret
