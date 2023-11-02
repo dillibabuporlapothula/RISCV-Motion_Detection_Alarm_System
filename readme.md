@@ -422,3 +422,73 @@ riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin/spike pk out
   **fdc42703**:  ```  lw	a4,-36(s0) ```
 
   This instruction loads a word from the memory address calculated by adding the immediate value -36 to the content of register s0 and stores it in register a4. the output value in x30 register is 00. 
+
+
+# Gate Level Simulation
+
+
+- GLS, initiated by running a test bench using the netlist file derived from synthesis, serves as the Design Under Test (DUT), ensuring logical consistency akin to RTL code.
+- The netlist, a logical match to RTL, facilitates using the same test bench, affirming the logical correctness of the design post-synthesis.
+- Gate Level Simulation conducted on the Yosys-synthesized netlist involves mapping standard cells from the sky130 library, confirming the integrity of the design's logic.
+- The process to convert the processor code to a netlist involves several sequential steps. The commands used are :
+
+```
+
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80_256.lib 
+read_verilog processor.v
+synth -top wrapper
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib 
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
+write_verilog syntheised__processor_test.v
+
+```
+
+
+![VirtualBox_ubuntu-VLSI_03_11_2023_01_46_19](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/d931c1f0-0994-4284-bd92-36668a918106)
+
+
+- Next the commands to run GLS simulation is as follows
+
+```
+
+iverilog -o test synth_processor_test.v testbench.v sky130_sram_1kbyte_1rw1r_32x256_8.v sky130_fd_sc_hd.v primitives.v
+./test
+gtkwave waverform.vcd
+
+```
+
+**Input 0** - For the sensor input changing from one to zero the output changing from 11 to 01 for short period because of masking and finally settling to 00.  
+
+![op_00](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/b09559f7-8860-4868-9c67-04cd2d11560a)
+
+
+
+
+
+**Input 1** - For the sensor input one the output is 01 initially because of masking and finally 11.
+
+
+![op_11](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/38219923-72ba-431f-adac-dbfcdb5eb7a6)
+
+
+
+
+
+**overall**
+
+![overall](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/9b7815ba-7b03-47ba-a4f6-b157fba45978)
+
+
+
+
+
+
+###  Synthesized netlised (wrapper module) with 2 SRAM cells highlighted in red
+
+
+
+![VirtualBox_ubuntu-VLSI_03_11_2023_02_37_20](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/9758f0bb-2430-4bfd-a7f0-b6cc32565ced)
+
+
+
+
