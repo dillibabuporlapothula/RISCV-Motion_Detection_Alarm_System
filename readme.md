@@ -491,4 +491,37 @@ gtkwave waverform.vcd
 
 
 
+# Openlane
+
+commands to run openlane
+
+```
+
+make mount
+%./flow.tcl -interactive
+% package require openlane 0.9
+% prep -design project
+
+```
+
+
+![VirtualBox_ubuntu-VLSI_16_11_2023_22_43_57](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/60c4dda7-e2f7-4da3-8d60-1da78c4577b7)
+
+### Synthesis
+
+command to run synthesis
+
+```
+run_synthesis
+
+```
+
+
+
+![VirtualBox_ubuntu-VLSI_16_11_2023_22_43_57](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/479b70d6-e73c-42d4-bcc7-8085f7d0bd40)
+
+
+![VirtualBox_ubuntu-VLSI_16_11_2023_22_46_58](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/98a635b4-0318-4849-9f5a-58af136f3db9)
+
+
 
