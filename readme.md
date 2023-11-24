@@ -564,6 +564,14 @@ magic -T /home/parallels/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f
 ### Placement
 
 
+- In the OpenLANE ASIC flow, the placement of standard cells on floorplan rows is a crucial step aligned with technology LEF file-defined sites. This process unfolds in two stages: Global Placement, aiming for optimal but potentially overlapping positions, and Detailed Placement, refining positions to adhere to legal constraints.
+
+
+- The synthesized netlist undergoes placement, with the initial step optimizing for wire length reduction. The subsequent detailed placement fine-tunes cell positions for legality. Execution of a specific command initiates the placement process, streamlining the positioning of cells on the floorplan for optimal chip implementation.
+  
+
+
+
 command to run placement
 
 ```
@@ -580,9 +588,26 @@ run_placement
 
 
 
+- To veiw on magic run below command
+
+
+  ```
+  magic -T /home/parallels/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+
+
+  ```
+
+
+
 ### CTS
 
 
+
+- Clock tree synthesis is vital for creating a network that distributes the clock signal to all sequential elements, with the key goal of minimizing skew across the chip. The widely used H-trees serve as an effective network topology in achieving this objective.
+
+-  The primary purpose of constructing a clock tree is to ensure the clock input reaches every element, maintaining zero clock skew. This process is essential for synchronized clock distribution across the integrated circuit, and the H-tree methodology is commonly employed in Clock Tree Synthesis (CTS).
+
+  
 command to run placement
 
 ```
@@ -596,9 +621,20 @@ run_cts
 ![VirtualBox_ubuntu-VLSI_17_11_2023_00_49_13](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/27243d99-babe-4513-a7d4-1ff8a6d0b9f0)
 
 
+
+
+
 ### routing
 
 
+It establishes the interconnect system between standard cells by utilizing the remaining metal layers post Clock Tree Synthesis (CTS) and Power Distribution Network (PDN) generation. Routing is conducted on specific grids to minimize Design Rule Checking (DRC) errors.
+
+OpenLANE employs the TritonRoute tool for routing, executed in two stages:
+
+- *Global Routing*  : The routing region is partitioned into rectangular grids, represented as coarse 3D routes using the Fastroute tool.
+- *Detailed Routing* : Finer grids and routing guides are utilized for precise physical wiring, facilitated by the TritonRoute tool.
+- 
+Key features of TritonRoute include adhering to pre-processed route guides, assuming each net satisfies inter-guide connectivity, and employing a Mixed-Integer Linear Programming (MILP) based panel routing scheme. It operates within an intra-layer parallel and inter-layer sequential routing framework.
 
 command to run placement
 
