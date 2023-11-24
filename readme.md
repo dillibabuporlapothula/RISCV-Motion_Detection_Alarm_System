@@ -493,6 +493,8 @@ gtkwave waverform.vcd
 
 # Openlane
 
+OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, KLayout and a number of custom scripts for design exploration and optimization. The flow performs all ASIC implementation steps from RTL all the way down to GDSII.
+
 commands to run openlane
 
 ```
@@ -509,6 +511,7 @@ make mount
 
 ### Synthesis
 
+- The logic synthesis process progresses from mapping the high-level HDL description to generic gates for optimization and subsequently mapping the optimized netlist to standard cells to align with the chosen technology for the final implementation of the logic. This intricate process ensures the efficient translation of high-level design specifications into a hardware description that is optimized for the targeted technology platform.
 command to run synthesis
 
 ```
@@ -521,7 +524,48 @@ run_synthesis
 ![VirtualBox_ubuntu-VLSI_16_11_2023_22_43_57](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/479b70d6-e73c-42d4-bcc7-8085f7d0bd40)
 
 
+
+synthesis results are below showing SRAM.
+
+
 ![VirtualBox_ubuntu-VLSI_16_11_2023_22_46_58](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/98a635b4-0318-4849-9f5a-58af136f3db9)
+
+
+### Floorplan  
+
+- The goal is to efficiently allocate silicon area and establish a robust power distribution network (PDN) for synthesized netlist components. Macro placement and blockages are defined to ensure a legalized GDS file during chip placement.
+  
+- Power planning involves creating a peripheral ring connected to pads and employing power straps for central power distribution, mitigating issues like IR drop. Key floorplan environment variables include core utilization, aspect ratio, core margin, and pin configurations. Vertical and horizontal metal layers are specified, with values typically one more than file specifications. This meticulous floorplanning optimizes silicon area, ensuring a reliable PDN and compliance with design constraints for successful chip implementation.
+
+
+command to run floorplan is 
+
+```
+run_floorplan
+
+```
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_13_36](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/bbab1ec9-88cb-4aff-8be5-8c0128ed8976)
+
+
+
+Following the completion of the floorplan run, a .def file will be generated in the results/floorplan directory. The floorplan files can be examined by consulting the floorplan.tcl. To visualize the floorplan, execute the Magic tool after navigating to the results/floorplan directory, using the following command:
+
+
+```
+magic -T /home/parallels/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
