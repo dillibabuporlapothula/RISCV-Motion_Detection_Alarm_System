@@ -533,9 +533,11 @@ synthesis results are below showing SRAM.
 
 ### Floorplan  
 
+
 - The goal is to efficiently allocate silicon area and establish a robust power distribution network (PDN) for synthesized netlist components. Macro placement and blockages are defined to ensure a legalized GDS file during chip placement.
   
 - Power planning involves creating a peripheral ring connected to pads and employing power straps for central power distribution, mitigating issues like IR drop. Key floorplan environment variables include core utilization, aspect ratio, core margin, and pin configurations. Vertical and horizontal metal layers are specified, with values typically one more than file specifications. This meticulous floorplanning optimizes silicon area, ensuring a reliable PDN and compliance with design constraints for successful chip implementation.
+
 
 
 command to run floorplan is 
@@ -557,6 +559,60 @@ Following the completion of the floorplan run, a .def file will be generated in 
 magic -T /home/parallels/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
 
 ```
+
+
+### Placement
+
+
+command to run placement
+
+```
+run_placement
+
+```
+
+
+
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_47_12](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/a6a94ad6-413a-4660-a377-13028b2fd3c5)
+
+
+
+
+### CTS
+
+
+command to run placement
+
+```
+run_cts
+
+```
+
+
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_49_13](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/27243d99-babe-4513-a7d4-1ff8a6d0b9f0)
+
+
+### routing
+
+
+
+command to run placement
+
+```
+run_routing
+
+```
+
+
+
+
+![VirtualBox_ubuntu-VLSI_22_11_2023_01_11_17](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/e0d0979f-02a1-4d97-aaed-33e0a7fdd522)
+
+
 
 
 
