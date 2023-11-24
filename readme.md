@@ -633,7 +633,7 @@ OpenLANE employs the TritonRoute tool for routing, executed in two stages:
 
 - *Global Routing*  : The routing region is partitioned into rectangular grids, represented as coarse 3D routes using the Fastroute tool.
 - *Detailed Routing* : Finer grids and routing guides are utilized for precise physical wiring, facilitated by the TritonRoute tool.
-- 
+  
 Key features of TritonRoute include adhering to pre-processed route guides, assuming each net satisfies inter-guide connectivity, and employing a Mixed-Integer Linear Programming (MILP) based panel routing scheme. It operates within an intra-layer parallel and inter-layer sequential routing framework.
 
 command to run placement
