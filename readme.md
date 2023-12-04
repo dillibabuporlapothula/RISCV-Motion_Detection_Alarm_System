@@ -667,6 +667,42 @@ run_cts
 
 
 
+#### TIMING Reports
+
+
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_53_53](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/b1a4082b-bab7-4128-941a-dff22aa5a931)
+
+
+
+
+
+#### Area Report
+
+
+
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_54_10](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/2ea80cda-b4bd-48df-b84b-f6cc05e5fa6f)
+
+
+
+
+
+####  Power Report
+
+
+
+
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_53_38](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/bdc4eb93-9676-4256-979a-ff5e16f7b835)
+
+
+
+
+
 
 ### Routing
 
@@ -727,5 +763,41 @@ magic -T /home/dilli/Desktop/sky130A.tech lef read /home/dilli/OpenLane/designs/
   ![routing-area](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/77594111-4de4-44a8-88e0-80f735747c82)
 
 
+
+
+
+
+
+
+#### TIMING Reports
+
+
+
+
+
+![clk-rout](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/9f170e49-6e47-45c6-bb5a-2b6c5989bf1c)
+
+
+
+
+#### Area Report
+
+
+
+
+
+![area-rout](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/1e0ae9a8-5c17-4e67-b6f8-ad5ea57f8aef)
+
+
+
+
+
+####  Power Report
+
+
+
+
+
+![power-report-rout](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/fd30da34-1927-46d8-9bf6-b5607fddbdc0)
 
 
