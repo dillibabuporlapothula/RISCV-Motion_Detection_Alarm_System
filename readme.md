@@ -556,9 +556,17 @@ Following the completion of the floorplan run, a .def file will be generated in 
 
 
 ```
-magic -T /home/parallels/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+magic -T /home/dilli/Desktop/sky130A.tech lef read /home/dilli/OpenLane/designs/alarm/runs/RUN_2023.11.22_10.02.23/tmp/merged.nom.lef def read wrapper.def &
 
 ```
+
+
+
+
+
+ ![floorplan](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/29f6acc0-1bcc-4b75-ade1-18abb413f27d)
+
+ 
 
 
 ### Placement
@@ -588,14 +596,23 @@ run_placement
 
 
 
-- To veiw on magic run below command
+- To veiw on magic run below command in /results/placement path
 
 
-  ```
-  magic -T /home/parallels/.volare/volare/sky130/versions/1341f54f5ce0c4955326297f235e4ace1eb6d419/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+magic -T /home/dilli/Desktop/sky130A.tech lef read /home/dilli/OpenLane/designs/alarm/runs/RUN_2023.11.22_10.02.23/tmp/merged.nom.lef def read wrapper.def &
+
+```
 
 
-  ```
+
+
+
+![-placement-magic](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/022a4410-39ca-4f53-9e38-a1d18efff5f4)
+
+
+
+
 
 
 
@@ -624,7 +641,7 @@ run_cts
 
 
 
-### routing
+### Routing
 
 
 It establishes the interconnect system between standard cells by utilizing the remaining metal layers post Clock Tree Synthesis (CTS) and Power Distribution Network (PDN) generation. Routing is conducted on specific grids to minimize Design Rule Checking (DRC) errors.
@@ -652,11 +669,35 @@ run_routing
 
 
 
+To view in magic go to /results/routing folder path and execute below magic command
+
+```
+magic -T /home/dilli/Desktop/sky130A.tech lef read /home/dilli/OpenLane/designs/alarm/runs/RUN_2023.11.22_10.02.23/tmp/merged.nom.lef def read wrapper.def &
+
+```
+
+
+
+
+![routing-magic](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/2a212562-214b-4943-9960-41eb533f8d97)
 
 
 
 
 
+
+![routing-magic-zoom](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/553ecf64-c7b2-428c-a523-58dce0d3fab4)
+
+
+
+
+
+- For viewing the Area:
+
+
+
+
+  ![routing-area](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/77594111-4de4-44a8-88e0-80f735747c82)
 
 
 
