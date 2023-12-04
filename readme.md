@@ -569,6 +569,33 @@ magic -T /home/dilli/Desktop/sky130A.tech lef read /home/dilli/OpenLane/designs/
  
 
 
+
+#### Core area
+
+
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_45_20](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/55350234-36ea-4950-bc66-44355b254716)
+
+
+
+
+#### Die area 
+
+
+
+
+
+![VirtualBox_ubuntu-VLSI_17_11_2023_00_45_30](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/69c0385e-f394-4c69-91aa-913ed5153d3e)
+
+
+
+
+
+
+
+
+
 ### Placement
 
 
