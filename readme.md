@@ -495,6 +495,18 @@ gtkwave waverform.vcd
 
 OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, KLayout and a number of custom scripts for design exploration and optimization. The flow performs all ASIC implementation steps from RTL all the way down to GDSII.
 
+
+
+
+
+![Screenshot (551)](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/c3faac7d-97fb-4eee-997e-9b5a7bcf14c9)
+
+
+
+
+
+
+
 commands to run openlane
 
 ```
