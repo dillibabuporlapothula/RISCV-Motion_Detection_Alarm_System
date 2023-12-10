@@ -801,3 +801,20 @@ magic -T /home/dilli/Desktop/sky130A.tech lef read /home/dilli/OpenLane/designs/
 ![power-report-rout](https://github.com/dillibabuporlapothula/RISCV-Motion_Detection_Alarm_System/assets/141803312/fd30da34-1927-46d8-9bf6-b5607fddbdc0)
 
 
+#### Performance calculation
+
+Clock period : 40ns
+setup slack : 10.09ns
+
+```
+
+                              1
+Max Performance =  ------------------------    = 33.43 MHz
+                     clock period - slack(setup)
+
+```
+
+
+
+### Word of Thanks
+I would like to sincerely thank Mr. Kunal Gosh, Founder of VSD (VLSI System Design), for his invaluable assistance and guidance, which played a pivotal role in ensuring the smooth completion of this project flow.
